@@ -1,0 +1,18 @@
+# train CCDA on office_10_10 A2W tasks
+python train_ccda.py --gpu 0 --source_path ./data/list/office_10_10/amazon_10_oneshot_addWebcam.txt --target_path ./data/list/office_10_10/webcam_20_oneshot.txt --test_path ./data/list/office_10_10/webcam_20_oneshot.txt --task aw --sampler sbs --alpha1_off 1.5 --alpha2_off 1.5 --alpha3_off 0.75 --beta_off 0.1 --data_set office_10_10
+# train CCDA_grl on office_10_10 A2W tasks
+python train_ccda_grl.py --gpu 0 --source_path ./data/list/office_10_10/amazon_10_oneshot_addWebcam.txt --target_path ./data/list/office_10_10/webcam_20_oneshot.txt --test_path ./data/list/office_10_10/webcam_20_oneshot.txt --task aw_grl --sampler sbs --alpha1_off 1.0 --alpha2_off 1.0 --alpha3_off 0.5 --beta_off 0.1 --data_set office_10_10
+# train CCDA on home_10_10 A2C tasks
+python train_ccda.py --gpu 0 --source_path ./data/list/home_10_10/Art_10_oneshot_addClipart.txt --target_path ./data/list/home_10_10/Clipart_20_oneshot.txt --test_path ./data/list/home_10_10/Clipart_20_oneshot.txt --task ac --sampler sbs --alpha1_off 1.5 --alpha2_off 1.5 --alpha3_off 0.75 --beta_off 0.1 --data_set home_10_10
+# train CCDA on domainNet_10_10 S2R tasks
+python train_ccda.py --gpu 0 --source_path ./data/list/domainNet_10_10/sketch_train_10_oneshot_addReal.txt --target_path ./data/list/domainNet_10_10/real_train_20_oneshot.txt --test_path ./data/list/domainNet_10_10/real_train_20_oneshot.txt --task sr --sampler sbs --alpha1_off 1.5 --alpha2_off 1.5 --alpha3_off 0.75 --beta_off 0.1 --data_set domainnet_10_10
+# train CCDA on office_5_15 A2W tasks
+python train_ccda.py --gpu 0 --source_path ./data/list/office_5_15/amazon_5_oneshot_addWebcam.txt --target_path ./data/list/office_5_15/webcam_20_oneshot.txt --test_path ./data/list/office_5_15/webcam_20_oneshot.txt --task aw_5_15 --sampler sbs --alpha1_off 1.5 --alpha2_off 4.5 --alpha3_off 1.125 --beta_off 0.1 --data_set office_5_15
+# train CCDA on office_15_5 A2W tasks
+python train_ccda.py --gpu 0 --source_path ./data/list/office_15_5/amazon_15_oneshot_addWebcam.txt --target_path ./data/list/office_15_5/webcam_20_oneshot.txt --test_path ./data/list/office_15_5/webcam_20_oneshot.txt --task aw_15_5 --sampler sbs --alpha1_off 1.5 --alpha2_off 0.5 --alpha3_off 0.375 --beta_off 0.1 --data_set office_15_5
+# train CCDA on office_3shot A2W tasks
+python train_ccda.py --gpu 0 --source_path ./data/list/office_3shot/amazon_10_3shot_addWebcam.txt --target_path ./data/list/office_3shot/webcam_20_3shot.txt --test_path ./data/list/office_3shot/webcam_20_3shot.txt --task aw_3shot --sampler sbs --alpha1_off 1.5 --alpha2_off 1.5 --alpha3_off 0.75 --beta_off 0.1 --data_set office_3shot
+# train CCDA on office_10_10 A2W tasks with fixed temperature
+python train_ccda.py --gpu 0 --source_path ./data/list/office_10_10/amazon_10_oneshot_addWebcam.txt --target_path ./data/list/office_10_10/webcam_20_oneshot.txt --test_path ./data/list/office_10_10/webcam_20_oneshot.txt --task aw_temp1000 --sampler sbs_fixed --temp 1000.0 --alpha1_off 1.5 --alpha2_off 1.5 --alpha3_off 0.75 --beta_off 0.1 --data_set office_10_10
+# train CCDA on office_10_10 A2W tasks with BIWAA'method
+python train_ccda.py --gpu 0 --source_path ./data/list/office_10_10/amazon_10_oneshot_addWebcam.txt --target_path ./data/list/office_10_10/webcam_20_oneshot.txt --test_path ./data/list/office_10_10/webcam_20_oneshot.txt --task aw_cb --sampler cls_balance --alpha1_off 1.5 --alpha2_off 1.5 --alpha3_off 0.75 --beta_off 0.1 --data_set office_10_10
