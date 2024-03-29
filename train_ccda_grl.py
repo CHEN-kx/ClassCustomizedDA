@@ -199,9 +199,9 @@ def train(config):
         if sum(shared_index) > 0:
             Fatt1 = DANNLoss_diffsize(features_base, adversarial_net_fatt1, shared_index, True)
             if sum(privated_index) > 0:
-                Frep = DANNLoss_diffsize(features_base, adversarial_net_frep, shared_index, False)
                 Fatt2 = DANNLoss_diffsize(features_base, adversarial_net_fatt2, privated_index, True)
-
+                Frep = DANNLoss_diffsize(features_base, adversarial_net_frep, shared_index, False)
+                
                 transfer_loss = config['loss']['alpha1_off'] * Fatt1 + \
                                 config['loss']['alpha2_off'] * Fatt2  + \
                                 config['loss']['alpha3_off'] * Frep
@@ -270,9 +270,9 @@ if __name__ == '__main__':
     parser.add_argument('--lr', type=float, default=0.0001, help='learning rate (Default:1e-4')
     parser.add_argument('--batch_size', type=int, default=36, help='mini batch size')
     parser.add_argument('--beta_off', type=float, default=0.1, help='target entropy loss weight ')
-    parser.add_argument('--alpha1_off', type=float, default=1.5, help='source to target align loss weight')
-    parser.add_argument('--alpha2_off', type=float, default=1.5, help='target labeld to unlabled align loss weight')
-    parser.add_argument('--alpha3_off', type=float, default=0.75, help='dis-alignment between source and target labeld data loss weight')
+    parser.add_argument('--alpha1_off', type=float, default=1.0, help='source to target align loss weight')
+    parser.add_argument('--alpha2_off', type=float, default=1.0, help='target labeld to unlabled align loss weight')
+    parser.add_argument('--alpha3_off', type=float, default=0.5, help='dis-alignment between source and target labeld data loss weight')
     parser.add_argument('--temp', type=float, default=1000.0, help='the value of temperature in SBS')
     args = parser.parse_args()
 
