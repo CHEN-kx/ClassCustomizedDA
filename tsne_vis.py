@@ -17,7 +17,7 @@ def parse_args():
     parser.add_argument('--checkpoint2', default = './snapshot/home_10_10/model/rpf1+f22_best_model.pth', help='checkpoint file')
     parser.add_argument('--checkpoint3', default = './snapshot/home_10_10/model/rp_best_model.pth', help='checkpoint file')
     parser.add_argument('--source_txt', default = './data/list/vis_home_R2P/source.txt')
-    parser.add_argument('--target_unlabel_txt', default = './data/list/vis_home_R2P/target_unlabeled.txt')
+    parser.add_argument('--target_unlabel_txt', default = './data/list/vis_home_R2P/target_unlabeled_splitSP.txt')
     parser.add_argument('--target_label_txt', default = './data/list/vis_home_R2P/target_labeled.txt')
     parser.add_argument('--batch_size', type = int, default=36)
     parser.add_argument('--launcher', choices=['none', 'pytorch', 'slurm', 'mpi'], default='none', help='job launcher')
@@ -57,13 +57,13 @@ def main():
         results = []
         if i == 0:
             model.load_state_dict(torch.load(args.checkpoint1)['base'])
-            save_fig = './tsne_f1_.png'
+            save_fig = './tsne_f1_v2.pdf'
         elif i == 1:
             model.load_state_dict(torch.load(args.checkpoint2)['base'])
-            save_fig = './tsne_f1+f2_.png'
+            save_fig = './tsne_f1+f2_v2.pdf'
         else:
             model.load_state_dict(torch.load(args.checkpoint3)['base'])
-            save_fig = './tsne_all_.png'
+            save_fig = './tsne_all_v2.pdf'
         model.eval()
         
         with torch.no_grad():
@@ -92,15 +92,19 @@ def main():
 
         lengths = 829
         lengthtu = 1382
+        lengthtu_share = 654
+        lengthtu_private = 728
         lengthtl = 10
         plt.cla()
         for k in range(0, lengths):#ECA8A9,D3E2B7,74AED4,fb8072,8dd3c7,8da0cb
-            plt.scatter(embeddings_tsne[k, 0], embeddings_tsne[k, 1], c = '#8dd3c7', s = 6,marker='.')#red, cmap='viridis'
-        for k in range(lengths, lengths+ lengthtu):
-            plt.scatter(embeddings_tsne[k, 0], embeddings_tsne[k, 1], c = '#8da0cb', s = 6,marker='.')#yellow
+            plt.scatter(embeddings_tsne[k, 0], embeddings_tsne[k, 1], c = '#8dd3c7', s = 6,marker='.')
+        for k in range(lengths, lengths+lengthtu_share):
+            plt.scatter(embeddings_tsne[k, 0], embeddings_tsne[k, 1], c = '#8da0cb', s = 6,marker='.')
+        for k in range(lengths+lengthtu_share, lengths+lengthtu_share+lengthtu_private):
+            plt.scatter(embeddings_tsne[k, 0], embeddings_tsne[k, 1], c = '#fb8072', s = 6,marker='.')
         for k in range(lengths + lengthtu, lengths+ lengthtu+ lengthtl):
-            plt.scatter(embeddings_tsne[k, 0], embeddings_tsne[k, 1], c = '#fb8072', s = 10,marker='*')#blue
-        plt.savefig(save_fig, dpi=300)    
+            plt.scatter(embeddings_tsne[k, 0], embeddings_tsne[k, 1], c = '#DC143C', s = 10,marker='*')
+        plt.savefig(save_fig, dpi=300, bbox_inches='tight')    
             
 if __name__ == '__main__':
     main()
