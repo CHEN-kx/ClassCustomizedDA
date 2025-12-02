@@ -78,15 +78,12 @@ Contributions are welcome! You can submit issues or pull requests by following t
 If you find this repository useful in your research, please cite our paper:
 
 ```bibtex
-@ARTICLE{11142945,
+@article{chen2025class,
+  title={Class-Customized Domain Adaptation: Unlock Each Customer-Specific Class With Single Annotation},
   author={Chen, Kaixin and Chang, Huiying and Xu, Mengqiu and Du, Ruoyi and Wu, Ming and Ma, Zhanyu and Zhang, Chuang},
-  journal={IEEE Transactions on Image Processing}, 
-  title={Class-Customized Domain Adaptation: Unlock Each Customer-Specific Class with Single Annotation}, 
+  journal={IEEE Transactions on Image Processing},
   year={2025},
-  volume={},
-  number={},
-  pages={1-1},
-  doi={10.1109/TIP.2025.3597036}
+  publisher={IEEE}
 }
 ```
 
